@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>إدارة المخزون والأرباح</title>
+
+    <!-- خط الموقع -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ملف التنسيق -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- خلفية التصميم -->
+    <div class="background-decoration"></div>
+
+    <!-- الحاوية الرئيسية -->
+    <div class="app-container">
+
+        <!-- القائمة الجانبية -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-logo">M</div>
+
+                <div class="brand-info">
+
+                    <h2>ماركت</h2>
+
+                    <p>  سوبر ماركت ابو خالد</p>
+
+                </div>
+
+            </div>
+
+            <div class="sidebar-title">القائمة الرئيسية</div>
+
+            <nav class="sidebar-nav">
+
+                <a href="#dashboard" class="nav-link active">
+
+                    <span class="nav-icon">▦</span>
+
+                    <span>لوحة التحكم</span>
+
+                </a>
+
+                <a href="#inventory" class="nav-link">
+
+                    <span class="nav-icon">▤</span>
+
+                    <span>المنتجات والمخزون</span>
+
+                </a>
+
+                <a href="#reports" class="nav-link">
+
+                    <span class="nav-icon">▥</span>
+
+                    <span>تقارير المخزون</span>
+
+                </a>
+
+                <a href="#backup" class="nav-link">
+
+                    <span class="nav-icon">⇅</span>
+
+                    <span>النسخ الاحتياطي</span>
+
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-help-icon">✦</div>
+
+                <h3>إدارة أسهل لمخزونك</h3>
+
+                <p>تابع بضاعتك وتكلفتها وأرباحك المتوقعة من مكان واحد.</p>
+
+            </div>
+
+            <div class="sidebar-footer">
+
+                <span class="status-dot"></span>
+
+                <span>النظام يعمل محليًا</span>
+
+            </div>
+
+        </aside>
+
+
+        <!-- المحتوى الرئيسي -->
+        <main class="main-content">
+
+            <!-- شريط العنوان -->
+            <header class="topbar">
+
+                <div class="topbar-right">
+
+                    <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+
+                        ☰
+
+                    </button>
+
+                    <div>
+
+                        <p class="topbar-greeting">مرحبًا بك 👋</p>
+
+                        <h1>لوحة التحكم</h1>
+
+                    </div>
+
+                </div>
+
+                <div class="topbar-left">
+
+                    <div class="today-date" id="todayDate"></div>
+
+                    <div class="user-avatar">م</div>
+
+                </div>
+
+            </header>
+
+
+            <!-- لوحة التحكم -->
+            <section class="page-section" id="dashboard">
+
+                <div class="welcome-banner">
+
+                    <div class="welcome-content">
+
+                        <span class="welcome-label">لوحة إدارة المخزون</span>
+
+                        <h2>كل تفاصيل مخزونك في مكان واحد</h2>
+
+                        <p>
+                            تابع الكميات والتكاليف وقيمة البيع والمكسب المتوقع بسهولة.
+                        </p>
+
+                        <button class="primary-button banner-button" id="bannerAddBtn">
+
+                            + إضافة منتج جديد
+
+                        </button>
+
+                    </div>
+
+                    <div class="welcome-decoration">
+
+                        <div class="decoration-circle circle-one"></div>
+
+                        <div class="decoration-circle circle-two"></div>
+
+                        <div class="decoration-box">▤</div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- بطاقات الإحصائيات -->
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon icon-purple">▤</div>
+
+                            <span class="stat-caption">المنتجات المسجلة</span>
+
+                        </div>
+
+                        <h3 id="totalProducts">0</h3>
+
+                        <p>إجمالي أنواع المنتجات</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon icon-blue">▦</div>
+
+                            <span class="stat-caption">كمية المخزون</span>
+
+                        </div>
+
+                        <h3 id="totalQuantity">0</h3>
+
+                        <p>بالوحدات الأساسية للمنتجات</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon icon-orange">◈</div>
+
+                            <span class="stat-caption">تكلفة المخزون</span>
+
+                        </div>
+
+                        <h3 id="totalCost">0 ج.م</h3>
+
+                        <p>إجمالي تكلفة شراء البضاعة</p>
+
+                    </article>
+
+
+                    <article class="stat-card profit-stat">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon icon-green">↗</div>
+
+                            <span class="stat-caption">المكسب المتوقع</span>
+
+                        </div>
+
+                        <h3 id="totalProfit">0 ج.م</h3>
+
+                        <p>إذا تم بيع كامل المخزون بالسعر المحدد</p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- ملخص مالي -->
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-kicker">الملخص المالي</span>
+
+                        <h2>نظرة عامة على البضاعة</h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="financial-grid">
+
+                    <article class="financial-card">
+
+                        <div class="financial-heading">
+
+                            <span>قيمة البيع المتوقعة</span>
+
+                            <span class="financial-icon sale-icon">↗</span>
+
+                        </div>
+
+                        <h3 id="totalSales">0 ج.م</h3>
+
+                        <p>القيمة الإجمالية المتوقعة عند بيع المخزون</p>
+
+                    </article>
+
+
+                    <article class="financial-card">
+
+                        <div class="financial-heading">
+
+                            <span>قيمة المخزون الحالية</span>
+
+                            <span class="financial-icon inventory-icon">▤</span>
+
+                        </div>
+
+                        <h3 id="inventoryValue">0 ج.م</h3>
+
+                        <p>تكلفة شراء الكميات الموجودة بالمخزن</p>
+
+                    </article>
+
+
+                    <article class="financial-card">
+
+                        <div class="financial-heading">
+
+                            <span>المنتجات منخفضة المخزون</span>
+
+                            <span class="financial-icon warning-icon">!</span>
+
+                        </div>
+
+                        <h3 id="lowStockCount">0</h3>
+
+                        <p>منتجات وصلت للحد الأدنى أو أقل</p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- قسم المنتجات -->
+            <section class="page-section inventory-section" id="inventory">
+
+                <div class="section-heading inventory-heading">
+
+                    <div>
+
+                        <span class="section-kicker">إدارة البضاعة</span>
+
+                        <h2>المنتجات والمخزون</h2>
+
+                        <p class="section-description">
+                            أضف منتجاتك وتابع الكميات والتكلفة والمكسب المتوقع.
+                        </p>
+
+                    </div>
+
+                    <button class="primary-button" id="addProductBtn">
+
+                        <span>+</span>
+
+                        إضافة منتج
+
+                    </button>
+
+                </div>
+
+
+                <!-- البحث والفلاتر -->
+                <div class="filter-card">
+
+                    <div class="search-box">
+
+                        <span class="search-icon">⌕</span>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="ابحث عن اسم المنتج..."
+                        >
+
+                    </div>
+
+
+                    <select id="categoryFilter" aria-label="تصفية حسب القسم">
+
+                        <option value="">كل الأقسام</option>
+
+                    </select>
+
+
+                    <select id="unitFilter" aria-label="تصفية حسب الوحدة">
+
+                        <option value="">كل الوحدات</option>
+
+                        <option value="قطعة">قطعة</option>
+
+                        <option value="كيس">كيس</option>
+
+                        <option value="باكيت">باكيت</option>
+
+                        <option value="عبوة">عبوة</option>
+
+                        <option value="كيلو">كيلو</option>
+
+                        <option value="متر">متر</option>
+
+                        <option value="وحدة">وحدة</option>
+
+                    </select>
+
+
+                    <button class="secondary-button" id="resetFiltersBtn">
+
+                        إعادة ضبط
+
+                    </button>
+
+                </div>
+
+
+                <!-- جدول المنتجات -->
+                <div class="table-card">
+
+                    <div class="table-header">
+
+                        <div>
+
+                            <h3>قائمة المنتجات</h3>
+
+                            <p>تفاصيل الكميات والأسعار والأرباح المتوقعة</p>
+
+                        </div>
+
+                        <span class="product-count" id="tableProductCount">
+
+                            0 منتج
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>المنتج</th>
+
+                                    <th>القسم</th>
+
+                                    <th>المخزون</th>
+
+                                    <th>تكلفة الشراء</th>
+
+                                    <th>قيمة البيع</th>
+
+                                    <th>المكسب المتوقع</th>
+
+                                    <th>الحالة</th>
+
+                                    <th>الإجراءات</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="productsTableBody">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div class="empty-state" id="emptyState">
+
+                        <div class="empty-icon">▤</div>
+
+                        <h3>لا توجد منتجات حتى الآن</h3>
+
+                        <p>ابدأ بإضافة أول منتج إلى مخزونك.</p>
+
+                        <button class="primary-button" id="emptyAddBtn">
+
+                            + إضافة أول منتج
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- قسم التقارير -->
+            <section class="page-section reports-section" id="reports">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-kicker">تحليل المخزون</span>
+
+                        <h2>تقارير المخزون والأرباح</h2>
+
+                        <p class="section-description">
+                            ملخص مالي لجميع المنتجات المسجلة.
+                        </p>
+
+                    </div>
+
+                    <button class="secondary-button" id="exportCsvBtn">
+
+                        ⇩ تصدير CSV
+
+                    </button>
+
+                </div>
+
+
+                <div class="report-card">
+
+                    <div class="report-title">
+
+                        <div>
+
+                            <h3>التقرير المالي التفصيلي</h3>
+
+                            <p>الأرقام محسوبة تلقائيًا من بيانات المنتجات الحالية.</p>
+
+                        </div>
+
+                        <span class="report-badge">تقرير المخزون</span>
+
+                    </div>
+
+
+                    <div class="report-list">
+
+                        <div class="report-row">
+
+                            <span>عدد أنواع المنتجات</span>
+
+                            <strong id="reportProducts">0</strong>
+
+                        </div>
+
+                        <div class="report-row">
+
+                            <span>إجمالي الوحدات الأساسية</span>
+
+                            <strong id="reportQuantity">0</strong>
+
+                        </div>
+
+                        <div class="report-row">
+
+                            <span>إجمالي تكلفة شراء المخزون</span>
+
+                            <strong id="reportCost">0 ج.م</strong>
+
+                        </div>
+
+                        <div class="report-row">
+
+                            <span>إجمالي قيمة البيع المتوقعة</span>
+
+                            <strong id="reportSales">0 ج.م</strong>
+
+                        </div>
+
+                        <div class="report-row">
+
+                            <span>إجمالي المكسب المتوقع</span>
+
+                            <strong class="profit-text" id="reportProfit">0 ج.م</strong>
+
+                        </div>
+
+                        <div class="report-row">
+
+                            <span>عدد المنتجات منخفضة المخزون</span>
+
+                            <strong id="reportLowStock">0</strong>
+
+                        </div>
+
+                    </div>
+
+                    <p class="report-note">
+
+                        تنبيه: المكسب المعروض تقديري، ويفترض بيع كامل الكمية بالسعر المسجل دون خصم مصروفات إضافية.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- قسم النسخ الاحتياطي -->
+            <section class="page-section backup-section" id="backup">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-kicker">حماية بياناتك</span>
+
+                        <h2>النسخ الاحتياطي والاستعادة</h2>
+
+                        <p class="section-description">
+                            احتفظ بنسخة من بياناتك واستعدها عند الحاجة.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="backup-grid">
+
+                    <article class="backup-card">
+
+                        <div class="backup-icon">⇩</div>
+
+                        <h3>حفظ نسخة احتياطية</h3>
+
+                        <p>
+                            نزّل جميع بيانات المنتجات في ملف JSON للاحتفاظ بها أو استعادتها لاحقًا.
+                        </p>
+
+                        <button class="primary-button" id="backupBtn">
+
+                            تنزيل النسخة الاحتياطية
+
+                        </button>
+
+                    </article>
+
+
+                    <article class="backup-card">
+
+                        <div class="backup-icon restore-icon">⇧</div>
+
+                        <h3>استعادة البيانات</h3>
+
+                        <p>
+                            استعد بيانات المخزون من نسخة احتياطية محفوظة على جهازك.
+                        </p>
+
+                        <button class="secondary-button" id="restoreBtn">
+
+                            اختيار نسخة للاستعادة
+
+                        </button>
+
+                        <input
+                            type="file"
+                            id="restoreInput"
+                            accept=".json,application/json"
+                            hidden
+                        >
+
+                    </article>
+
+
+                    <article class="backup-card">
+
+                        <div class="backup-icon csv-icon">▦</div>
+
+                        <h3>تصدير جدول المنتجات</h3>
+
+                        <p>
+                            صدّر بيانات المنتجات إلى CSV لفتحها في برامج الجداول الإلكترونية.
+                        </p>
+
+                        <button class="secondary-button" id="backupCsvBtn">
+
+                            تصدير ملف CSV
+
+                        </button>
+
+                    </article>
+
+                </div>
+
+                <div class="local-storage-notice">
+
+                    <span>ⓘ</span>
+
+                    <p>
+                        البيانات محفوظة على هذا المتصفح. النسخ الاحتياطي مهم لحماية بياناتك.
+                        المزامنة بين الكمبيوتر والموبايل تحتاج إلى قاعدة بيانات على الإنترنت،
+                        وهي غير مفعّلة في هذه النسخة.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- تذييل الصفحة -->
+            <footer class="main-footer">
+
+                <p>مخزني © 2026 — إدارة ذكية لمخزونك</p>
+
+                <p>نظام متابعة المخزون والأرباح المتوقعة</p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- نافذة إضافة وتعديل المنتج -->
+    <div class="modal-overlay" id="productModal" aria-hidden="true">
+
+        <div class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="section-kicker">بيانات المنتج</span>
+
+                    <h2 id="modalTitle">إضافة منتج جديد</h2>
+
+                    <p>أدخل البيانات لحساب تكلفة المخزون والأرباح تلقائيًا.</p>
+
+                </div>
+
+                <button class="modal-close" id="closeModalBtn" aria-label="إغلاق">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <form id="productForm">
+
+                <input type="hidden" id="productId">
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="productName">اسم المنتج *</label>
+
+                        <input
+                            type="text"
+                            id="productName"
+                            placeholder="مثال: بسكويت"
+                            required
+                            maxlength="100"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="productCategory">القسم *</label>
+
+                        <input
+                            type="text"
+                            id="productCategory"
+                            placeholder="مثال: مواد غذائية"
+                            required
+                            maxlength="60"
+                            list="categorySuggestions"
+                        >
+
+                        <datalist id="categorySuggestions">
+
+                            <option value="مواد غذائية"></option>
+
+                            <option value="أدوات مكتبية"></option>
+
+                            <option value="أدوات مدرسية"></option>
+
+                            <option value="منظفات"></option>
+
+                            <option value="أخرى"></option>
+
+                        </datalist>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="productUnit">وحدة البيع الأساسية *</label>
+
+                        <select id="productUnit" required>
+
+                            <option value="قطعة">قطعة</option>
+
+                            <option value="كيس">كيس</option>
+
+                            <option value="باكيت">باكيت</option>
+
+                            <option value="عبوة">عبوة</option>
+
+                            <option value="كيلو">كيلو</option>
+
+                            <option value="متر">متر</option>
+
+                            <option value="وحدة">وحدة</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="stockUnit">وحدة التخزين *</label>
+
+                        <select id="stockUnit" required>
+
+                            <option value="قطعة">قطعة</option>
+
+                            <option value="كرتونة">كرتونة</option>
+
+                            <option value="كيس">كيس</option>
+
+                            <option value="باكيت">باكيت</option>
+
+                            <option value="عبوة">عبوة</option>
+
+                            <option value="كيلو">كيلو</option>
+
+                            <option value="متر">متر</option>
+
+                            <option value="وحدة">وحدة</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group full-width" id="unitsPerPackageGroup">
+
+                        <label for="unitsPerPackage">
+
+                            عدد وحدات البيع داخل وحدة التخزين
+
+                        </label>
+
+                        <input
+                            type="number"
+                            id="unitsPerPackage"
+                            min="1"
+                            step="any"
+                            value="12"
+                        >
+
+                        <small>
+                            مثال: الكرتونة تحتوي على 12 كيسًا. عند تخزين المنتج بالقطعة نفسها اترك القيمة 1.
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-divider full-width">
+
+                        <span>الكميات والأسعار</span>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="stockQuantity" id="stockQuantityLabel">
+
+                            كمية المخزون
+
+                        </label>
+
+                        <input
+                            type="number"
+                            id="stockQuantity"
+                            min="0"
+                            step="any"
+                            placeholder="مثال: 10"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="purchasePrice" id="purchasePriceLabel">
+
+                            سعر شراء وحدة التخزين (جنيه) *
+
+                        </label>
+
+                        <input
+                            type="number"
+                            id="purchasePrice"
+                            min="0"
+                            step="any"
+                            placeholder="مثال: 50"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="sellingPrice" id="sellingPriceLabel">
+
+                            سعر بيع الوحدة الأساسية (جنيه) *
+
+                        </label>
+
+                        <input
+                            type="number"
+                            id="sellingPrice"
+                            min="0"
+                            step="any"
+                            placeholder="مثال: 5"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="minimumStock">
+
+                            حد التنبيه الأدنى
+
+                        </label>
+
+                        <input
+                            type="number"
+                            id="minimumStock"
+                            min="0"
+                            step="any"
+                            value="5"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- معاينة الحسابات -->
+                <div class="calculation-preview">
+
+                    <h3>معاينة الحسابات التلقائية</h3>
+
+                    <div class="preview-grid">
+
+                        <div class="preview-item">
+
+                            <span>إجمالي الوحدات</span>
+
+                            <strong id="previewUnits">0</strong>
+
+                        </div>
+
+                        <div class="preview-item">
+
+                            <span>تكلفة المخزون</span>
+
+                            <strong id="previewCost">0 ج.م</strong>
+
+                        </div>
+
+                        <div class="preview-item">
+
+                            <span>قيمة البيع</span>
+
+                            <strong id="previewSales">0 ج.م</strong>
+
+                        </div>
+
+                        <div class="preview-item preview-profit">
+
+                            <span>المكسب المتوقع</span>
+
+                            <strong id="previewProfit">0 ج.م</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button type="button" class="secondary-button" id="cancelModalBtn">
+
+                        إلغاء
+
+                    </button>
+
+                    <button type="submit" class="primary-button" id="saveProductBtn">
+
+                        حفظ المنتج
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- نافذة تأكيد الحذف -->
+    <div class="modal-overlay" id="deleteModal" aria-hidden="true">
+
+        <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
+
+            <div class="delete-icon">!</div>
+
+            <h2 id="deleteTitle">حذف المنتج؟</h2>
+
+            <p id="deleteMessage">هل أنت متأكد من حذف هذا المنتج؟</p>
+
+            <div class="modal-actions">
+
+                <button class="secondary-button" id="cancelDeleteBtn">
+
+                    إلغاء
+
+                </button>
+
+                <button class="danger-button" id="confirmDeleteBtn">
+
+                    حذف المنتج
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- رسائل التنبيه -->
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+
+    <!-- ملف JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
